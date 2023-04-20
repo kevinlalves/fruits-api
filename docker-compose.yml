@@ -1,0 +1,22 @@
+version: '3.8'
+
+x-base-service:
+  &base-service
+  tty: true
+  stdin_open: true
+  command: make boot-startup
+  working_dir: /app
+
+services:
+  ###################
+  # Back end services
+  app:
+    &app
+    <<: *base-service
+    build:
+      context: .
+      dockerfile: Dockerfile.development
+    ports:
+      - 3000:5000
+    volumes:
+      - .:/app:cached
