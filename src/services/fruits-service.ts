@@ -4,7 +4,6 @@ import { Fruit } from "../repositories/fruits-repository";
 export type FruitInput = Omit<Fruit, "id">;
 
 function getFruits() {
-  console.log(database);
   return database.getFruits();
 }
 
